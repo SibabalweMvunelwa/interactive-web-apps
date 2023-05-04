@@ -180,7 +180,7 @@ data-search-form.onclick = (filters) => {
     const filters = Object.fromEntries(formData)
     result = []
 
-    // LOOK AT ORIGINAL
+    // LOOK AT ORIGINAL for reference
     // changed for to ForEach
     // seperateed each statement with approiate brackets
     // set up proper bolleans with appropriate = to check whether each const was truthy. 
