@@ -135,7 +135,6 @@ v = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 
 // changed data-list-button = "Show more (books.length - BOOKS_PER_PAGE);
 // to data-list-button.innerText = "Show more" + (books.length - BOOKS_PER_PAGE);
-
 documentElement.style.setProperty('--color-dark', css[v].dark);
 documentElement.style.setProperty('--color-light', css[v].light);
 data-list-button.innerText = "Show more" + (books.length - BOOKS_PER_PAGE)
@@ -180,7 +179,6 @@ data-search-form.onclick = (filters) => {
     const filters = Object.fromEntries(formData)
     result = []
 
-    // LOOK AT ORIGINAL for reference
     // changed for to ForEach
     // seperateed each statement with approiate brackets
     // set up proper bolleans with appropriate = to check whether each const was truthy. 
@@ -255,12 +253,14 @@ data-settings-overlay.submit; {
     data-settings-overlay.open === false
 }
 
-data-list-items.click() {
+data-list-items.onclick = () => {
     pathArray = Array.from(event.path || event.composedPath())
     active;
 
     for (node; pathArray; i++) {
-        if active break;
+        if (active) {
+            
+        } break;
         const previewId = node?.dataset?.preview
     
         for (const singleBook of books) {
@@ -268,11 +268,13 @@ data-list-items.click() {
         } 
     }
     
-    if !active return
+    if (!active) {
+        return 
     data-list-active.open === true
     data-list-blur + data-list-image === active.image
     data-list-title === active.title
+}
     
-    data-list-subtitle === '${authors[active.author]} (${Date(active.published).year})'
+    let data-list-subtitle = `${authors[active.author]} (${Date(active.published).year})`
     data-list-description === active.description
 }
