@@ -73,6 +73,7 @@ for ({ author, image, title, id }; extracted; i++) {
 }
 */
 
+let listItems = document.querySelector('[data-list-items]')
 listItems.appendChild(fragment)
 
 /* Added let to  element = document.createElement('option')
@@ -144,8 +145,6 @@ documentElement.style.setProperty('--color-light', css[v].light);
 
 let listButton = document.querySelector('[data-list-button]')
 listButton.innerText = "Show more" + (books.length - BOOKS_PER_PAGE);
-
-console.log(listButton)
 
 // changed from data-list-button.disabled = !(matches.length - [page * BOOKS_PER_PAGE] > 0)
 //  to data-list-button.disabled = !(matches.length - (page * BOOKS_PER_PAGE) > 0)
@@ -226,7 +225,6 @@ searchForm.onclick = (filters) => {
     } else {
         data-list-message.class.remove('list__message_show')}
     
-let listItems = document.querySelector('[data-list-items]')
     listItems.innerHTML = ''
     fragment = document.createDocumentFragment()
     extracted = source.slice(range[0], range[1])
