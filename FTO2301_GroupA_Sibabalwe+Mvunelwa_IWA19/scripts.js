@@ -32,6 +32,27 @@ const night = {
 let fragment = document.createDocumentFragment()
 let extracted = books.slice(0, 36)
 
+let createPreview = (props) => {
+    const { author: authorId, id, image, title } = props
+
+        let element = document.createElement('button')
+        element.classList = 'preview'
+        element.setAttribute('data-preview', id)
+
+        element.innerHTML = /* html */ `
+            <img
+                class="preview__image"
+                src="${image}"
+            />
+            
+            <div class="preview__info">
+                <h3 class="preview__title">${title}</h3>
+                <div class="preview__author">${authors[authorId]}</div>
+            </div>
+        `
+
+}
+
 extracted.forEach(({ author, image, title, id }) => {
     const preview = createPreview({
         author,
@@ -108,7 +129,7 @@ let searchGenres = document.querySelector('[data-search-genres]')
 searchGenres.appendChild(genres)
 
 let authorsList = document.createDocumentFragment()
-let element = document.createElement('option')
+element = document.createElement('option')
 element.value = 'any'
 element.innerText = 'All Authors'
 authors.appendChild(element)
@@ -179,7 +200,7 @@ listClose.onclick = () => { return listActive.open === false }
 changed multiplication signs, and add brackets around each sum (page*BOOKS_PER_PAGE) and ((page + 1) * BOOKS_PER_PAGE))
 */
 listButton.onclick = () => {
-    listButton.appendChild(createPreviewsFragment(matches, (page * BOOKS_PER_PAGE), ((page + 1) * BOOKS_PER_PAGE)))
+    listButton.appendChild(createPreviewFragment(matches, (page * BOOKS_PER_PAGE), ((page + 1) * BOOKS_PER_PAGE)))
     actions.list.updateRemaining()
     page = page + 1
 }
@@ -198,7 +219,7 @@ let searchForm = document.querySelector('[data-search-form]')
 searchForm.onclick = (filters) => {
     preventDefault()
     const formData = new FormData(event.target)
-    const filters = Object.fromEntries(formData)
+    filters = Object.fromEntries(formData)
     result = []
 
     // changed for to ForEach
@@ -230,24 +251,7 @@ searchForm.onclick = (filters) => {
     extracted = source.slice(range[0], range[1])
 
     for ({ author, image, title, id }; extracted; i++) {
-        const { author: authorId, id, image, title } = props
-
-        element = document.createElement('button')
-        element.classList = 'preview'
-        element.setAttribute('data-preview', id)
-
-        element.innerHTML = /* html */ `
-            <img
-                class="preview__image"
-                src="${image}"
-            />
-            
-            <div class="preview__info">
-                <h3 class="preview__title">${title}</h3>
-                <div class="preview__author">${authors[authorId]}</div>
-            </div>
-        `
-
+        let element = createPreview({author, image, title, id})
         fragment.appendChild(element)
     }
     
