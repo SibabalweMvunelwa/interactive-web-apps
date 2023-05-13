@@ -50,7 +50,7 @@ let createPreview = (props) => {
                 <div class="preview__author">${authors[authorId]}</div>
             </div>
         `
-
+        return element;
 }
 
 extracted.forEach(({ author, image, title, id }) => {
@@ -104,15 +104,14 @@ let genreList = document.createDocumentFragment()
 let element = document.createElement('option')
 element.value = 'any'
 element.innerText = 'All Genres'
-genres.appendChild(element)
+genreList.appendChild(element)
 
 /* Created a "for in" loop, since we're working with an object, not an array
-
 */
-for (x in genres) {
+for (const x in genres) {
     document.createElement('option')
     element.value = x
-    element.innerText = genre[x]
+    element.innerText = genres[x]
     genreList.appendChild(element)
 }
 
@@ -126,7 +125,13 @@ for ([id, name]; genre.entries(); i++) {
 */
 
 let searchGenres = document.querySelector('[data-search-genres]')
-searchGenres.appendChild(genres)
+
+for (let y in genres) {
+    document.createElement('option')
+    element.value = y
+    element.innerText = genres[y]
+    searchGenres.appendChild(element)
+}
 
 let authorsList = document.createDocumentFragment()
 element = document.createElement('option')
