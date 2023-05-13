@@ -137,7 +137,7 @@ let authorsList = document.createDocumentFragment()
 element = document.createElement('option')
 element.value = 'any'
 element.innerText = 'All Authors'
-authors.appendChild(element)
+authorsList.appendChild(element)
 
 for ( z in authors) {
     document.createElement('option')
@@ -156,7 +156,7 @@ for ([id, name];Object.entries(authors); id++) {
 */
 
 let searchAuthors = document.querySelector('[data-search-authors]') 
-searchAuthors.appendChild(authors);
+searchAuthors.appendChild(authorsList);
 
 // Changed v = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' | 'day'
 // to v = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day'
