@@ -73,7 +73,7 @@ for ({ author, image, title, id }; extracted; i++) {
 }
 */
 
-data-list-items.appendChild(fragment)
+listItems.appendChild(fragment)
 
 /* Added let to  element = document.createElement('option')
 changed element = 'All Genres' to element.innerText = 'All Genres'
@@ -103,7 +103,8 @@ for ([id, name]; genre.entries(); i++) {
 }
 */
 
-data-search-genres.appendChild(genres)
+let searchGenres = document.querySelector('[data-search-genres]')
+searchGenres.appendChild(genres)
 
 let authorsList = document.createDocumentFragment()
 let element = document.createElement('option')
@@ -127,11 +128,13 @@ for ([id, name];Object.entries(authors); id++) {
 }
 */
 
-data-search-authors.appendChild(authors);
+let searchAuthors = document.querySelector('[data-search-authors]') 
+searchAuthors.appendChild(authors);
 
 // Changed v = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' | 'day'
 // to v = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day'
-data-settings-theme.value === window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day'
+let settingsTheme = document.querySelector('[data-settings-theme]')
+settingsTheme.value === window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day'
 v = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day'
 
 // changed data-list-button = "Show more (books.length - BOOKS_PER_PAGE);
