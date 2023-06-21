@@ -1,7 +1,14 @@
 // script.js
 
+
 const add = (a, b) => { return a + b }
 
+//@ts-check
+/**
+ * @param {*} a 
+ * @param {*} b 
+ * @returns number 
+ */
 const multiply = (a, b) => { return a * b }
 
 function internal() {
